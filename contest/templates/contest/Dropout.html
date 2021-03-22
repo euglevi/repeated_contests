@@ -1,0 +1,35 @@
+
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Your group size has changed
+{% endblock %}
+
+{% block content %}
+
+<p align="center">
+
+	<div class="card border-danger mb-3">
+	  <div class="card-body text-danger">
+	    <p class="card-text">One of your fellow group member has dropped out of the
+	    experiment. In the remaining rounds, the number of persons in your group will be
+	    {{ group.active_in_group }}.
+	    </p>
+	  </div>
+	</div>
+
+	<div class="card bg-light border-danger mb-3">
+	  <div class="card-body">
+    	    	<h6 class="card-title">Your earnings</h6>
+		<p class="card-text"> In the remaining rounds, your earnings in each round are = Tokens in your private account +
+		{{ Constants.MPCR }}*(Total tokens allocated to the group account by all {{ group.active_in_group }} group
+		members)
+	        </p>
+	 </div>
+  	</div>
+	
+	{% next_button %}
+
+</p>
+{% endblock %}

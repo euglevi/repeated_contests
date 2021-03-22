@@ -1,0 +1,19 @@
+
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Introduction to the experiment
+{% endblock %}
+
+{% block content %}
+
+{% formfields %}
+
+Please read the instructions carefully. They are <b>identical</b> for all participants with whom you will interact.
+<br>
+<br>
+{% include "instructions/instructions1_within.html" %}
+
+{% next_button %}
+{% endblock %}

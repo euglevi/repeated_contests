@@ -1,0 +1,49 @@
+
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Outcome of Stage 1
+{% endblock %}
+
+{% block content %}
+
+<style>
+    .otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 5) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+
+<p align='center'>
+
+	Lottery tickets bought by you: {{ player.tokens1 }} tickets
+	<br><br>
+	Lottery tickets bought by your co-participant: {{ tickets_other }} tickets
+	<br><br>
+	Your chance of winning the prize: {{ chance }}%
+	<br><br>
+	Your co-participant’s chance of winning the prize: {{ chance_other }}%
+	<br><br>
+	The winner of the prize: {% if player.id_in_group == group.winner1 %}<b>You</b>
+	{% elif group.total_tickets1 == 0 %}<b>None</b> {% else %}
+	<b>Your co-participant</b> {% endif %}
+	<br><br>
+	<b>Your earning after Stage 1:</b> {{ player.earnings1 }} tokens
+	
+
+	<br><br>
+	{% next_button %}
+
+</p>
+
+{% endblock %}

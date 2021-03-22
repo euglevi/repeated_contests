@@ -1,0 +1,35 @@
+
+<ul> 
+	<li>In Stage 2, both you and your co-participant will again compete for a
+		prize. As in Stage 1, both you and your co-participant can buy
+		lottery tickets that will enter the draw for the prize. </li>
+	<li>Your earnings from Stage 1 will be your endowment in Stage 2. </li>
+	<li>Both participants can use their earnings from Stage 1 to buy lottery
+	tickets in Stage 2. Note that earnings from Stage 1 include the prize
+	of 100 tokens for the winner of the prize in Stage 1. </li>
+	<li>
+	{% if player.treatment == 'baseline' or player.treatment == 'budget' %}
+	As in Stage 1, you and your co-participant can buy 1 lottery ticket with 1 token.
+	{% elif player.treatment == 'productive' %}
+	If you won the prize in Stage 1, you can buy 4 lottery tickets with 1
+	token and your co-participant can buy 1 lottery ticket with 1 token.
+	If you did not win the prize in Stage 1, you can buy 1 lottery ticket
+	with 1 token and your co-participant can buy 4 lottery tickets with 1
+	token. 
+	{% elif player.treatment == 'cost' %}
+	If you did not win the prize in Stage 1, you can buy 1 lottery tickets with 4
+	tokens and your co-participant can buy 1 lottery ticket with 1 token.
+	If you won the prize in Stage 1, you can buy 1 lottery ticket
+	with 1 token and your co-participant can buy 1 lottery ticket with 4
+	tokens. 
+	{% endif %}
+	</li>
+</ul>
+
+<div class="card bg-light border-danger mb-3">
+  <div class="card-body">
+    <p class="card-text"> <b>Decision</b>: You and your co-participant must
+    decide how many tokens to use to buy lottery tickets. Participants will
+    retain tokens not used to buy lottery tickets.</p>  </div>
+</div>
+

@@ -1,0 +1,31 @@
+
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Additional bonus opportunity
+{% endblock %}
+
+{% block content %}
+
+{% if participant.vars.treatment == 'ineq' %}
+You can earn an additional bonus by answering the following questions.
+{% else %}
+You can earn an additional bonus by answering the following question.
+{% endif %}
+<br>
+{% formfields %}
+
+{% if participant.vars.treatment == 'ineq' %}
+At the end of the experiment, one of the two questions will be randomly chosen.
+{% endif %}
+If your answer to that question is within 1 token (+/- 1) of the actual average
+allocation at the end of the experiment, you will receive an additional bonus
+payment of 100 tokens.
+<br>
+<br>
+
+<button class="btn btn-primary">Submit</button>
+
+{% endblock %}
+

@@ -1,0 +1,41 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+ Additional earning opportunity
+{% endblock %}
+
+{% block content %}
+
+<head>
+    <style>
+th, td {
+	padding: 5px;
+    }
+    </style>
+</head>
+
+For each question below you answer correctly, you will receive an additional bonus payment of {{ Constants.bonus }} tokens.
+
+<br>
+<br>
+{{ form.ball.label }} 
+<br>
+<table><tr><td>{{ form.ball }}</td> <td>cents</td></tr></table>
+<br>
+
+{{ form.machine.label }} 
+<br>
+<table><tr><td>{{ form.machine }}</td> <td>minutes</td></tr></table>
+<br>
+
+{{ form.lake.label }} 
+<br>
+<table><tr><td>{{ form.lake }}</td> <td>days</td></tr></table>
+
+<br>
+<br>
+
+    {% next_button %}
+
+{% endblock %}

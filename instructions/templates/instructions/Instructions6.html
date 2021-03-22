@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Earnings in Stage 2
+{% endblock %}
+
+{% block content %}
+
+<head>
+    <style>
+thead {
+	border-bottom: 2px solid black;
+}
+tfoot {
+	border-top: 2px solid black;
+}
+th, td {
+	padding: 15px;
+    }
+td, th.a {
+	text-align: center;
+}
+
+    </style>
+</head>
+
+{% include "instructions/instructions6_within.html" %}
+{% next_button %}
+
+{% endblock %}

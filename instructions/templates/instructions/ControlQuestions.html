@@ -1,0 +1,65 @@
+
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Please answer the following questions:
+{% endblock %}
+
+{% block content %}
+
+<head>
+    <style>
+thead {
+	border-bottom: 2px solid black;
+}
+tfoot {
+	border-top: 2px solid black;
+}
+th, td {
+	padding: 15px;
+    }
+td, th.a {
+	text-align: center;
+}
+
+    </style>
+</head>
+
+{% formfield 'question1' %}
+In Stage 1, suppose you buy 10 lottery tickets, and your co-participant buys 20 lottery tickets.
+<br>
+<br>
+{% formfield 'question2' %}
+{% formfield 'question3' %}
+{% formfield 'question4' %}
+{% if player.treatment == 'cost' %}
+{% formfield 'question5_cost' %}
+{% else %}
+{% formfield 'question5' %}
+{% endif %}
+{% formfield 'question6' %}
+
+
+<button class="btn btn-primary">Submit</button>
+<br>
+<p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+       aria-controls="collapseExample">
+        Instructions from the previous screens
+    </a>
+</p>
+<div class="collapse" id="collapseExample">
+    <div class="card bg-light border-dark">
+        <div class="card-body">
+            {% include "instructions/instructions1_within.html" %}
+            {% include "instructions/instructions2_within.html" %}
+            {% include "instructions/instructions3_within.html" %}
+            {% include "instructions/instructions4_within.html" %}
+            {% include "instructions/instructions5_within.html" %}
+            {% include "instructions/instructions6_within.html" %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

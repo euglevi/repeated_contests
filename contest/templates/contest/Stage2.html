@@ -1,0 +1,47 @@
+
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Stage 2
+{% endblock %}
+
+{% block content %}
+
+Your earning after Stage 1: <b>{{ player.earnings1 }} tokens</b>.
+<br><br>
+
+You can use your earning from Stage 1 to buy lottery tickets. Your co-participant will make the same decision.
+<br><br>
+{% if player.treatment == 'baseline' or player.treatment == 'budget' or group.total_tickets1 == 0 %}
+For both you and your co-participant, one token buys one lottery ticket.
+{% elif player.treatment == 'productive' and player.id_in_group == group.winner1 %}
+For you, one token buys four lottery tickets. For your co-participant, one token buys one lottery ticket.
+{% elif player.treatment == 'productive' and player.id_in_group != group.winner1 %}
+For you, one token buys one lottery tickets. For your co-participant, one token buys four lottery ticket.
+{% elif player.treatment == 'cost' and player.id_in_group == group.winner1 %}
+For you, one token buys one lottery tickets. For your co-participant, four tokens buy one lottery ticket.
+{% elif player.treatment == 'cost' and player.id_in_group != group.winner1 %}
+For you, four tokens buy one lottery tickets. For your co-participant, one token buys one lottery ticket.
+{% endif %}
+
+{% formfields %}
+
+<button class="btn btn-primary">Submit</button>
+<br>
+<br>
+<p>
+    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
+       aria-controls="collapseExample">
+	Instructions from the previous screens
+    </a>
+</p>
+<div class="collapse" id="collapseExample">
+    <div class="card bg-light border-dark">
+	<div class="card-body">
+	    {% include "contest/instructions5_within.html" %}
+	    {% include "contest/instructions6_within.html" %}
+	</div>
+    </div>
+</div>
+{% endblock %}

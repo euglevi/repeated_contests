@@ -1,0 +1,194 @@
+
+<div class="card border-success mb-3">
+  <div class="card-body">
+    <p class="card-text">
+	    <b>If you win the prize:</b> you will earn the tokens you kept for
+	    yourself, and the prize.
+	    <br>
+	    <br>
+	    Your earnings = Your endowment – Number of tokens used to purchase lottery
+	    tickets + Prize 
+    </p>
+  </div>
+</div>
+<div class="card border-danger mb-3">
+  <div class="card-body">
+    <p class="card-text">
+	    <b>If you lose the prize:</b> you will only earn the tokens you kept for
+	    yourself.
+	    <br>
+	    <br>
+	    Your earnings = Your endowment – Number of tokens used to purchase lottery
+	    tickets
+    </p>
+  </div>
+</div>
+{% if player.treatment == 'budget' %}
+<div class="card text-dark mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Example</h5>
+    <p class="card-text">You and your co-participant each receive an endowment
+    of 25 tokens. Suppose you use 4 tokens to purchase 4 lottery tickets and
+    your co-participant uses 12 tokens to purchase 12 lottery tickets.</p>
+	    <p class="card-text"><b>There is a 4/(4 + 12) = 25% chance one of your
+		    tickets will be chosen and you win the prize.</b> </p>
+	    <p class="card-text"><b>Stage 1 earnings would be:</b> </p>
+	    <table class="table-primary">
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col" class="a">You</th>
+				<th scope="col" class="a">Your co-participant</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<tr>
+				<th scope="row">Endowment</th>
+				<td>25 tokens</td>
+				<td>25 tokens</td>
+			</tr>
+			<tr>
+				<th scope="row">Tokens used to purchase lottery tickets</th>
+				<td>- 4 tokens</td>
+				<td>- 12 tokens</td>
+			</tr>
+			<tr>
+				<th scope="row">Prize</th>
+				<td>+ 100 tokens</td>
+				<td>+ 0 tokens</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th scope="row">Total Stage 1 earnings</th>
+				<td> = 121 tokens</td>
+				<td> = 13 tokens</td>
+			</tr>
+		</tfoot>
+	    </table>
+	    <br>
+	    <p class="card-text"><b>There is a 12/(4 + 12) = 75% chance one of
+		    your co-participant's tickets will be chosen and you do not
+		    win the prize.</b> 
+	    </p>
+	    <p class="card-text"><b>Stage 1 earnings would be:</b> </p>
+	    <table class="table-primary">
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col" class="a">You</th>
+				<th scope="col" class="a">Your co-participant</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<tr>
+				<th scope="row">Endowment</th>
+				<td>25 tokens</td>
+				<td>25 tokens</td>
+			</tr>
+			<tr>
+				<th scope="row">Tokens used to purchase lottery tickets</th>
+				<td>- 4 tokens</td>
+				<td>- 12 tokens</td>
+			</tr>
+			<tr>
+				<th scope="row">Prize</th>
+				<td>+ 0 tokens</td>
+				<td>+ 100 tokens</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th scope="row">Total Stage 1 earnings</th>
+				<td> = 21 tokens</td>
+				<td> = 113 tokens</td>
+			</tr>
+		</tfoot>
+	    </table>
+</div>
+</div>
+{% else %}
+<div class="card text-dark mb-3">
+  <div class="card-body">
+    <h5 class="card-title">Example</h5>
+    <p class="card-text">You and your co-participant each receive an endowment
+    of 100 tokens. Suppose you use 20 tokens to purchase 20 lottery tickets and
+    your co-participant uses 60 tokens to purchase 60 lottery tickets.</p>
+	    <p class="card-text"><b>There is a 20/(20 + 60) = 25% chance one of your
+		    tickets will be chosen and you win the prize.</b> </p>
+	    <p class="card-text"><b>Stage 1 earnings would be:</b> </p>
+	    <table class="table-primary">
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col" class="a">You</th>
+				<th scope="col" class="a">Your co-participant</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<tr>
+				<th scope="row">Endowment</th>
+				<td>100 tokens</td>
+				<td>100 tokens</td>
+			</tr>
+			<tr>
+				<th scope="row">Tokens used to purchase lottery tickets</th>
+				<td>- 20 tokens</td>
+				<td>- 60 tokens</td>
+			</tr>
+			<tr>
+				<th scope="row">Prize</th>
+				<td>+ 100 tokens</td>
+				<td>+ 0 tokens</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th scope="row">Total Stage 1 earnings</th>
+				<td> = 180 tokens</td>
+				<td> = 40 tokens</td>
+			</tr>
+		</tfoot>
+	    </table>
+	    <br>
+	    <p class="card-text"><b>There is a 60/(20 + 60) = 75% chance one of
+		    your co-participant's tickets will be chosen and you do not
+		    win the prize.</b> 
+	    </p>
+	    <p class="card-text"><b>Stage 1 earnings would be:</b> </p>
+	    <table class="table-primary">
+		<thead>
+			<tr>
+				<th scope="col"></th>
+				<th scope="col" class="a">You</th>
+				<th scope="col" class="a">Your co-participant</th>
+			</tr>
+		</thead>	
+		<tbody>
+			<tr>
+				<th scope="row">Endowment</th>
+				<td>100 tokens</td>
+				<td>100 tokens</td>
+			</tr>
+			<tr>
+				<th scope="row">Tokens used to purchase lottery tickets</th>
+				<td>- 20 tokens</td>
+				<td>- 60 tokens</td>
+			</tr>
+			<tr>
+				<th scope="row">Prize</th>
+				<td>+ 0 tokens</td>
+				<td>+ 100 tokens</td>
+			</tr>
+		</tbody>
+		<tfoot>
+			<tr>
+				<th scope="row">Total Stage 1 earnings</th>
+				<td> = 80 tokens</td>
+				<td> = 140 tokens</td>
+			</tr>
+		</tfoot>
+	    </table>
+</div>
+</div>
+{% endif %}
