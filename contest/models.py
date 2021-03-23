@@ -157,7 +157,7 @@ class Player(BasePlayer):
 
     def tokens2_error_message(self, value):
         if self.treatment == 'cost' and \
-            self.tokens2%Constants.ratio_costprod != 0 and \
+            value%Constants.ratio_costprod != 0 and \
             self.id_in_group is not self.group.winner1:
             return "The number of tokens must be a multiple of 4, i.e. \
                 the price of each ticket"
