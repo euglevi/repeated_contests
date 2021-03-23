@@ -99,7 +99,7 @@ class Group(BaseGroup):
                                     p.id_in_group is self.winner1 else p.tokens2
                 elif p.treatment == 'cost':
                     p.tickets2 = p.tokens2 if p.id_in_group is self.winner1 else \
-                                    p.tokens2/Constants.ratio_costprod
+                                    int(p.tokens2/Constants.ratio_costprod)
             self.total_tickets2 = sum([p.tickets2 for p in self.get_players()])
             if self.total_tickets2 != 0:
                 self.winner2 = random.choices([p.id_in_group for p in
