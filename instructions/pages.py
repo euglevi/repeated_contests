@@ -49,12 +49,16 @@ class ControlQuestions(Page):
 class BeliefElicitation1(Page):
     """Belief elicition before group formation"""
     
+    timeout_seconds = Constants.timeout_decision
+    timer_text = 'Time left to take your decision:'
     form_model = 'player'
     form_fields = ['belief1']
 
     def before_next_page(self):
         self.participant.vars['belief1'] = self.player.belief1
         self.participant.vars['wait_page_arrival'] = time.time()
+        if self.timeout_happened:
+            self.player.belief1 = 500
 
 
 page_sequence = [InformedConsent, Instructions1, Instructions2, Instructions3,

@@ -26,6 +26,7 @@ class Constants(BaseConstants):
     question5_cost_answer = "1 token"
     question6_answer = True
 
+    timeout_decision = 45
 
 class Subsession(BaseSubsession):
 

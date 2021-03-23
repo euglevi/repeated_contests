@@ -64,6 +64,10 @@ class BeliefElicitation2(Page):
         return self.participant.vars['group_formed'] == True and \
                     self.group.expiry_group is False
 
+    def before_next_page(self):
+        if self.timeout_happened:
+            self.player.belief2 = 500
+
 class Stage2(Page):
 
     timeout_seconds = Constants.timeout_decision
