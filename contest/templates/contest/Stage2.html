@@ -9,6 +9,8 @@ Stage 2
 {% block content %}
 
 Your earning after Stage 1: <b>{{ player.earnings1 }} tokens</b>.
+<br>
+Your co-participant earning after Stage 1: <b>{{ player.other_earnings1 }} tokens</b>.
 <br><br>
 
 You can use your earning from Stage 1 to buy lottery tickets. Your co-participant will make the same decision.
@@ -18,11 +20,11 @@ For both you and your co-participant, one token buys one lottery ticket.
 {% elif player.treatment == 'productive' and player.id_in_group == group.winner1 %}
 For you, one token buys four lottery tickets. For your co-participant, one token buys one lottery ticket.
 {% elif player.treatment == 'productive' and player.id_in_group != group.winner1 %}
-For you, one token buys one lottery tickets. For your co-participant, one token buys four lottery ticket.
+For you, one token buys one lottery ticket. For your co-participant, one token buys four lottery tickets.
 {% elif player.treatment == 'cost' and player.id_in_group == group.winner1 %}
-For you, one token buys one lottery tickets. For your co-participant, four tokens buy one lottery ticket.
+For you, one token buys one lottery ticket. For your co-participant, four tokens buy one lottery ticket.
 {% elif player.treatment == 'cost' and player.id_in_group != group.winner1 %}
-For you, four tokens buy one lottery tickets. For your co-participant, one token buys one lottery ticket.
+For you, four tokens buy one lottery ticket. For your co-participant, one token buys one lottery ticket.
 {% endif %}
 
 {% formfields %}

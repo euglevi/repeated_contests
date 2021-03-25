@@ -160,7 +160,12 @@ class Player(BasePlayer):
             value%Constants.ratio_costprod != 0 and \
             self.id_in_group is not self.group.winner1:
             return "The number of tokens must be a multiple of 4, i.e. \
-                the price of each ticket"
+                the price of each ticket for you"
+
+    def record_other_earnings1(self):
+        self.other_earnings1 = [p.earnings1 for p in 
+                                self.get_others_in_group()][0]
+
 
     # dropouts
     expiry = models.BooleanField(initial=False) 
@@ -173,9 +178,14 @@ class Player(BasePlayer):
                                   " Stage 2?", min=0)
 
     def belief2_max(self):
-        self.other_earnings1 = [p.earnings1 for p in 
-                                    self.get_others_in_group()][0]
         return self.other_earnings1
+
+    def belief2_error_message(self, value):
+        if self.treatment == 'cost' and \
+            value%Constants.ratio_costprod != 0 and \
+            self.id_in_group is self.group.winner1:
+            return "The number of tokens must be a multiple of 4, i.e. \
+                the price of each ticket for your co-participant"
 
     def set_earnings_beliefs(self):
         self.other_tokens2 = [p.tokens2 for p in self.get_others_in_group()][0]

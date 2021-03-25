@@ -47,6 +47,13 @@ SESSION_CONFIG_DEFAULTS = dict(
 # for example: de, fr, ja, ko, zh-hans
 LANGUAGE_CODE = 'en'
 
+# e.g. EUR, GBP, CNY, JPY
+REAL_WORLD_CURRENCY_CODE = 'USD'
+USE_POINTS = True
+
+ROOMS = [
+]
+
 ADMIN_USERNAME = 'admin'
 # for security, best to set admin password in an environment variable
 ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
@@ -55,3 +62,4 @@ ADMIN_PASSWORD = environ.get('OTREE_ADMIN_PASSWORD')
 SECRET_KEY = 'gl+1nkgr29mi865!&1y_k3%cibuz6(&@gpt(iq3d-@f*=s&qxq'
 
 INSTALLED_APPS = ['otree']
+BROWSER_COMMAND = 'firefox'

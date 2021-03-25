@@ -77,7 +77,6 @@ class Player(BasePlayer):
     # control questions
     question1 = models.BooleanField(label=
                                     "1. You will be matched with a different co-participant in each Stage.",
-                                    choices=[[1, "True"], [0, "False"]],
                                     widget=widgets.RadioSelect)
     question2 = models.StringField(label=
                                     "2. What is your chance of winning the prize in Stage 1?",
@@ -109,7 +108,7 @@ class Player(BasePlayer):
     question6 = models.BooleanField(label=
                                     "6. Your final earning from the experiment"
                                     " will be your earning after:", 
-                                    choices=[[0, "Stage 1"], [1, "Stage 2"]],
+                                    choices=[[False, "Stage 1"], [True, "Stage 2"]],
                                     widget=widgets.RadioSelect)
     question3_answer = models.StringField()
     question4_answer = models.StringField()
