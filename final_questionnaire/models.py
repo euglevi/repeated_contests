@@ -219,9 +219,9 @@ class Constants(BaseConstants):
     ball_answer = 5
     machine_answer = 5
     lake_answer = 47
-    bonus = 50
+    bonus = 20
 
-    exchange_rate = 300
+    exchange_rate = 250
 
 
 class Subsession(BaseSubsession):

@@ -25,6 +25,8 @@ class Constants(BaseConstants):
     question2_answer = "10/30" 
     question5_cost_answer = "1 token"
     question6_answer = True
+    bonus = 30
+    exchange_rate = 250
 
     timeout_decision = 45
 
@@ -113,6 +115,7 @@ class Player(BasePlayer):
     question3_answer = models.StringField()
     question4_answer = models.StringField()
     question5_answer = models.StringField()
+    mistakes = models.IntegerField(initial=0)
 
     def question3_choices(self):
         if self.treatment == 'budget':
@@ -130,30 +133,37 @@ class Player(BasePlayer):
 
     def question1_error_message(self, value):
         if value != Constants.question1_answer:
+            self.mistakes = self.mistakes + 1
             return 'Check your answer to question 1!'
 
     def question2_error_message(self, value):
         if value != Constants.question2_answer:
+            self.mistakes = self.mistakes + 1
             return 'Check your answer to question 2!'
 
     def question3_error_message(self, value):
         if value != self.question3_answer:
+            self.mistakes = self.mistakes + 1
             return 'Check your answer to question 3!'
 
     def question4_error_message(self, value):
         if value != self.question4_answer:
+            self.mistakes = self.mistakes + 1
             return 'Check your answer to question 4!'
 
     def question5_error_message(self, value):
         if value != self.question5_answer:
+            self.mistakes = self.mistakes + 1
             return 'Check your answer to question 5!'
 
     def question5_cost_error_message(self, value):
         if value != Constants.question5_cost_answer:
+            self.mistakes = self.mistakes + 1
             return 'Check your answer to question 5!'
 
     def question6_error_message(self, value):
         if value != Constants.question6_answer:
+            self.mistakes = self.mistakes + 1
             return 'Check your answer to question 6!'
 
     # forms for belief elicitation

@@ -20,7 +20,7 @@ Ending the experiment
 
 Thank you for participating in our experiment! <br> <br>
 
-{% if participant.vars.expiry_group == False and participant.vars.group_formed == True %}
+{% if participant.vars.expiry_group == False and participant.vars.group_formed == True and participant.vars.expiry == False %}
 <p align=center><b>
 	Your earnings after Stage 2: {{ participant.vars.earnings2 }} tokens
 	<br>
@@ -51,10 +51,10 @@ To end the experiment, please click the completion link below that will take you
 <a href="{{completion_link}}"> {{completion_link}} </a>
 
 {% elif participant.vars.expiry == True %}
-We are sorry, but you missed the timeout for making your decision in at least one Stage of the experiment. Therefore, you cannot be paid for this experiment. We kindly ask that you return your submission to Prolific.
+We are sorry, but you missed the timeout for making one of your decisions. Therefore, you cannot be paid for this experiment. We kindly ask that you return your submission to Prolific.
 <br> <br>
 {% elif participant.vars.expiry_passive == True %}
-We are sorry, but your co-participant missed the timeout for making his/her decision in at least one Stage of the experiment. Therefore, you will be paid the fixed amount posted in Prolific plus a bonus for your time.
+We are sorry, but your co-participant missed the timeout for making one of his/her decisions. Therefore, you will be paid the fixed amount posted in Prolific plus a bonus for your time.
 <br> <br>
 To end the experiment, please click the completion link below that will take you back to Prolific: <br> <br>
 <a href="{{completion_link}}"> {{completion_link}} </a>

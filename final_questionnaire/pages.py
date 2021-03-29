@@ -9,7 +9,8 @@ class CRT(Page):
 
     def is_displayed(self):
         return self.participant.vars['group_formed'] == True and \
-                    self.participant.vars['expiry_group'] is False
+                    self.participant.vars['expiry_group'] is False \
+                    and self.participant.vars['expiry'] is False
 
     def before_next_page(self):
         self.player.set_bonus()
@@ -25,7 +26,8 @@ class Questionnaire(Page):
 
     def is_displayed(self):
         return self.participant.vars['group_formed'] == True and \
-                    self.participant.vars['expiry_group'] is False
+                    self.participant.vars['expiry_group'] is False \
+                    and self.participant.vars['expiry'] is False
 
 
 class Completion(Page):

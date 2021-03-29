@@ -10,6 +10,9 @@ class FormingGroups(WaitPage):
 
     group_by_arrival_time = True
 
+    def is_displayed(self):
+        return self.participant.vars['expiry'] == False
+
 class Stage1(Page):
 
     timeout_seconds = Constants.timeout_decision
@@ -18,7 +21,9 @@ class Stage1(Page):
     form_fields = ['tokens1']
 
     def is_displayed(self):
-        return self.participant.vars['group_formed'] == True
+        return self.participant.vars['group_formed'] == True and \
+                self.participant.vars['expiry'] == False
+
 
     def before_next_page(self):
         if self.timeout_happened:
@@ -32,7 +37,8 @@ class Results1WaitPage(WaitPage):
 
     def is_displayed(self):
         return self.participant.vars['group_formed'] == True and \
-                    self.group.expiry_group is False
+                    self.group.expiry_group is False and \
+                    self.participant.vars['expiry'] == False
 
 class Results1(Page):
 
@@ -51,7 +57,8 @@ class Results1(Page):
 
     def is_displayed(self):
         return self.participant.vars['group_formed'] == True and \
-                    self.group.expiry_group is False
+                    self.group.expiry_group is False and \
+                    self.participant.vars['expiry'] == False
 
     def before_next_page(self):
         self.player.record_other_earnings1()
@@ -65,11 +72,24 @@ class BeliefElicitation2(Page):
     
     def is_displayed(self):
         return self.participant.vars['group_formed'] == True and \
-                    self.group.expiry_group is False
+                    self.group.expiry_group is False and \
+                    self.participant.vars['expiry'] == False
 
     def before_next_page(self):
         if self.timeout_happened:
             self.player.belief2 = 500
+            self.player.expiry = True
+            self.group.set_expiry()
+
+class Belief2WaitPage(WaitPage):
+
+    template_name = "contest/ResultsWaitPage.html"
+
+    def is_displayed(self):
+        return self.participant.vars['group_formed'] == True and \
+                    self.group.expiry_group is False and \
+                    self.participant.vars['expiry'] == False
+
 
 class Stage2(Page):
 
@@ -80,7 +100,8 @@ class Stage2(Page):
 
     def is_displayed(self):
         return self.participant.vars['group_formed'] == True and \
-                    self.group.expiry_group is False
+                    self.group.expiry_group is False and \
+                    self.participant.vars['expiry'] == False
 
     def before_next_page(self):
         if self.timeout_happened:
@@ -94,7 +115,8 @@ class Results2WaitPage(WaitPage):
 
     def is_displayed(self):
         return self.participant.vars['group_formed'] == True and \
-                    self.group.expiry_group is False
+                    self.group.expiry_group is False and \
+                    self.participant.vars['expiry'] == False
 
 class Results2(Page):
 
@@ -113,7 +135,8 @@ class Results2(Page):
 
     def is_displayed(self):
         return self.participant.vars['group_formed'] == True and \
-                    self.group.expiry_group is False
+            self.group.expiry_group is False and \
+            self.participant.vars['expiry'] == False
 
     def before_next_page(self):
         self.player.set_earnings_beliefs()
@@ -122,4 +145,5 @@ class Results2(Page):
         self.participant.vars['earnings2'] = self.player.earnings2
 
 page_sequence = [FormingGroups, Stage1, Results1WaitPage, Results1,
-                 BeliefElicitation2, Stage2, Results2WaitPage, Results2]
+                 BeliefElicitation2, Belief2WaitPage, Stage2, Results2WaitPage,
+                 Results2]

@@ -28,7 +28,7 @@ class Constants(BaseConstants):
     prize = 100
     ratio_costprod = 4
 
-    bonus = 50
+    bonus = 30
 
 class Subsession(BaseSubsession):
 

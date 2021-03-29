@@ -59,6 +59,7 @@ class BeliefElicitation1(Page):
         self.participant.vars['wait_page_arrival'] = time.time()
         if self.timeout_happened:
             self.player.belief1 = 500
+            self.participant.vars['expiry'] = True
 
 
 page_sequence = [InformedConsent, Instructions1, Instructions2, Instructions3,
