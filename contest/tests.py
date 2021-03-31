@@ -8,12 +8,14 @@ import random
 class PlayerBot(Bot):
     def play_round(self):
 
-        if self.participant.id_in_session in [2, 5, 6, 19, 24, 41, 52, 34, 66]:
+        if self.participant.id_in_session in [5, 6, 24, 41, 52, 34, 66]:
             yield Submission(pages.Stage1, timeout_happened=True)
-        else:
+        elif self.participant.vars['expiry'] is False and \
+        self.participant.vars['group_formed'] is True:
             yield pages.Stage1, dict(tokens1=random.randint(0,self.player.endowment1))
 
-        if self.group.expiry_group==False:
+        if self.group.expiry_group==False and self.participant.vars['expiry'] is False \
+                and self.participant.vars['group_formed'] is True:
             yield pages.Results1
             if self.participant.id_in_session in [9, 29, 44, 81]:
                 yield Submission(pages.BeliefElicitation2, timeout_happened=True)
@@ -28,8 +30,9 @@ class PlayerBot(Bot):
         else:
             pass
 
-        if self.group.expiry_group==False:
-            if self.participant.id_in_session in [31, 78]:
+        if self.group.expiry_group==False and self.participant.vars['expiry'] is False \
+                and self.participant.vars['group_formed'] is True:
+            if self.participant.id_in_session in [2, 4, 31, 78]:
                 yield Submission(pages.Stage2, timeout_happened=True)
             elif self.participant.vars['treatment']=='cost' and \
                 self.player.id_in_group!=self.group.winner1: 
@@ -40,7 +43,8 @@ class PlayerBot(Bot):
         else:
             pass
 
-        if self.group.expiry_group==False:
+        if self.group.expiry_group==False and self.participant.vars['expiry'] is False \
+                and self.participant.vars['group_formed'] is True:
             yield pages.Results2
 
 

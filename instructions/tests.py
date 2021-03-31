@@ -46,6 +46,8 @@ class PlayerBot(Bot):
         
         if self.participant.vars['treatment']=='budget':
             yield pages.BeliefElicitation1, dict(belief1=random.randint(0,25))
+        elif self.participant.id_in_session in [11, 49, 63]:
+            yield Submission(pages.BeliefElicitation1, timeout_happened=True)
         else:
             yield pages.BeliefElicitation1, dict(belief1=random.randint(0,100))
 

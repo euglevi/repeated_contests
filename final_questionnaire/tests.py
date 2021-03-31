@@ -9,7 +9,9 @@ class PlayerBot(Bot):
 
     def play_round(self):
 
-        if self.participant.vars['expiry_group'] is False:
+        if self.participant.vars['expiry_group'] is False and \
+                self.participant.vars['expiry'] is False \
+                and self.participant.vars['group_formed'] is True:
             yield SubmissionMustFail(pages.CRT,dict(ball='0.5',machine='25',
                                                     lake='33')) 
             yield pages.CRT, dict(ball=5,machine=5,lake=49)
