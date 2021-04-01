@@ -33,7 +33,7 @@ class Questionnaire(Page):
 class Completion(Page):
 
     def vars_for_template(self):
-        completion_link = "https://app.prolific.co/submissions/complete?cc=8D6CA3EC"
+        completion_link = "https://app.prolific.co/submissions/complete?cc=85BC7136"
         return dict(completion_link=completion_link, )
 
 
