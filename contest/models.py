@@ -132,7 +132,7 @@ class Player(BasePlayer):
     no_group = models.BooleanField(initial=False)
 
     def waiting_too_long(self):
-        return time.time() - self.participant.vars['wait_page_arrival'] > 3*60
+        return time.time() - self.participant.vars['wait_page_arrival'] > 240
 
 
     # variables for the game
