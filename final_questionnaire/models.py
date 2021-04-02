@@ -19,6 +19,7 @@ class Constants(BaseConstants):
     name_in_url = 'f3'
     players_per_group = None
     num_rounds = 1
+    timeout_decision = 120
     country_list = ['Afghanistan',
                     'Albania',
                     'Algeria',
@@ -252,6 +253,8 @@ class Player(BasePlayer):
     bonus_machine = models.IntegerField()
     bonus_lake = models.IntegerField()
     bonus3 = models.IntegerField()
+    timeout_CRT = models.BooleanField(initial=False)
+
     final_earnings = models.FloatField()
 
     # def ball_error_message(self, value):

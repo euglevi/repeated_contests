@@ -6,6 +6,8 @@ class CRT(Page):
 
     form_model = 'player'
     form_fields = ['ball', 'machine', 'lake']
+    timeout_seconds = Constants.timeout_decision
+    timer_text = 'Time left to take your decision:'
 
     def is_displayed(self):
         return self.participant.vars['group_formed'] == True and \
@@ -14,6 +16,8 @@ class CRT(Page):
 
     def before_next_page(self):
         self.player.set_bonus()
+        if self.timeout_happened(self):
+            self.player.timeout_CRT = True
 
 class Questionnaire(Page):
 
