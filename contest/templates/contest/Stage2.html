@@ -14,7 +14,7 @@ Your co-participant earning after Stage 1: <b>{{ player.other_earnings1 }} token
 <br><br>
 
 You can use your earning from Stage 1 to buy lottery tickets. Your co-participant will make the same decision.
-<br><br>
+<br>
 <b>
 	{% if player.treatment == 'baseline' or player.treatment == 'budget' or group.total_tickets1 == 0 %}
 	For both you and your co-participant, one token buys one lottery ticket.
@@ -28,6 +28,7 @@ You can use your earning from Stage 1 to buy lottery tickets. Your co-participan
 	For you, four tokens buy one lottery ticket. For your co-participant, one token buys one lottery ticket.
 	{% endif %}
 </b>
+<br>
 
 {% formfields %}
 
