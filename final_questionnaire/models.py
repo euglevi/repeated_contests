@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     name_in_url = 'f3'
     players_per_group = None
     num_rounds = 1
-    timeout_decision = 120
+    timeout_decision = 180
     country_list = ['Afghanistan',
                     'Albania',
                     'Algeria',

@@ -12,7 +12,21 @@
 th, td {
 	padding: 5px;
     }
-    </style>
+.otree-timer {
+        display: none;
+    }
+</style>
+
+<script>
+    $(function () {
+        $('.otree-timer__time-left').on('update.countdown', function (event) {
+            if (event.offset.totalSeconds === 30) {
+                $('.otree-timer').show();
+            }
+        });
+    });
+</script>
+
 </head>
 
 For each question below you answer correctly, you will receive an additional bonus payment of {{ Constants.bonus }} tokens.

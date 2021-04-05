@@ -15,17 +15,19 @@ Your co-participant earning after Stage 1: <b>{{ player.other_earnings1 }} token
 
 You can use your earning from Stage 1 to buy lottery tickets. Your co-participant will make the same decision.
 <br><br>
-{% if player.treatment == 'baseline' or player.treatment == 'budget' or group.total_tickets1 == 0 %}
-For both you and your co-participant, one token buys one lottery ticket.
-{% elif player.treatment == 'productive' and player.id_in_group == group.winner1 %}
-For you, one token buys four lottery tickets. For your co-participant, one token buys one lottery ticket.
-{% elif player.treatment == 'productive' and player.id_in_group != group.winner1 %}
-For you, one token buys one lottery ticket. For your co-participant, one token buys four lottery tickets.
-{% elif player.treatment == 'cost' and player.id_in_group == group.winner1 %}
-For you, one token buys one lottery ticket. For your co-participant, four tokens buy one lottery ticket.
-{% elif player.treatment == 'cost' and player.id_in_group != group.winner1 %}
-For you, four tokens buy one lottery ticket. For your co-participant, one token buys one lottery ticket.
-{% endif %}
+<b>
+	{% if player.treatment == 'baseline' or player.treatment == 'budget' or group.total_tickets1 == 0 %}
+	For both you and your co-participant, one token buys one lottery ticket.
+	{% elif player.treatment == 'productive' and player.id_in_group == group.winner1 %}
+	For you, one token buys four lottery tickets. For your co-participant, one token buys one lottery ticket.
+	{% elif player.treatment == 'productive' and player.id_in_group != group.winner1 %}
+	For you, one token buys one lottery ticket. For your co-participant, one token buys four lottery tickets.
+	{% elif player.treatment == 'cost' and player.id_in_group == group.winner1 %}
+	For you, one token buys one lottery ticket. For your co-participant, four tokens buy one lottery ticket.
+	{% elif player.treatment == 'cost' and player.id_in_group != group.winner1 %}
+	For you, four tokens buy one lottery ticket. For your co-participant, one token buys one lottery ticket.
+	{% endif %}
+</b>
 
 {% formfields %}
 
