@@ -249,10 +249,10 @@ class Player(BasePlayer):
                                cover the entire lake, how long would it take \
                                for the patch to cover half the lake?", min=0,
                                max=1000)
-    bonus_ball = models.IntegerField()
-    bonus_machine = models.IntegerField()
-    bonus_lake = models.IntegerField()
-    bonus3 = models.IntegerField()
+    bonus_ball = models.IntegerField(initial=0)
+    bonus_machine = models.IntegerField(initial=0)
+    bonus_lake = models.IntegerField(initial=0)
+    bonus3 = models.IntegerField(initial=0)
     timeout_CRT = models.BooleanField(initial=False)
 
     final_earnings = models.FloatField()

@@ -16,7 +16,7 @@ class CRT(Page):
 
     def before_next_page(self):
         self.player.set_bonus()
-        if self.timeout_happened(self):
+        if self.timeout_happened:
             self.player.timeout_CRT = True
 
 class Questionnaire(Page):
@@ -32,7 +32,6 @@ class Questionnaire(Page):
         return self.participant.vars['group_formed'] == True and \
                     self.participant.vars['expiry_group'] is False \
                     and self.participant.vars['expiry'] is False
-
 
 class Completion(Page):
 
