@@ -37,8 +37,10 @@ class Subsession(BaseSubsession):
             p.treatment = p.participant.vars['treatment']
             if p.treatment == 'budget':
                 p.endowment1 = 25
+                p.endowment2 = 25
             else:
                 p.endowment1 = 100
+                p.endowment2 = 100
 
     def group_by_arrival_time_method(self, waiting_players):
         baseline = [p for p in waiting_players 
@@ -59,8 +61,7 @@ class Subsession(BaseSubsession):
         if len(budget) >= 2:
             return budget[:2]
         for player in waiting_players:
-            if player.waiting_too_long():
-                # make a single-player group.
+            if player.waiting_too_long():                 # make a single-player group.
                 player.participant.vars['group_formed'] = False
                 player.no_group = True
                 return [player]
@@ -107,12 +108,12 @@ class Group(BaseGroup):
                                               weights=[p.tickets2 for p in
                                                        self.get_players()])[0]
                 for p in self.get_players():
-                    p.earnings2 = p.earnings1 - p.tokens2 + Constants.prize if \
+                    p.earnings2 = p.earnings1 + p.endowment2 - p.tokens2 + Constants.prize if \
                                     p.id_in_group is self.winner2 else \
-                                    p.earnings1 - p.tokens2
+                                    p.earnings1 + p.endowment2 - p.tokens2
             else:
                 for p in self.get_players():
-                    p.earnings2 = p.earnings1 - p.tokens2
+                    p.earnings2 = p.earnings1 + p.endowment2 - p.tokens2
 
     def set_expiry(self):
         self.expiry_group = True 
@@ -137,6 +138,7 @@ class Player(BasePlayer):
 
     # variables for the game
     endowment1 = models.IntegerField()
+    endowment2 = models.IntegerField()
     tokens1 = models.IntegerField(label="How many tokens would you like to use \
                                   to buy lottery tickets in Stage 1?", min=0)
     tokens2 = models.IntegerField(label="How many tokens would you like to use \
@@ -153,7 +155,7 @@ class Player(BasePlayer):
         return self.endowment1
 
     def tokens2_max(self):
-        return self.earnings1
+        return self.endowment2
 
     def tokens2_error_message(self, value):
         if self.treatment == 'cost' and \
@@ -178,7 +180,7 @@ class Player(BasePlayer):
                                   " Stage 2?", min=0)
 
     def belief2_max(self):
-        return self.other_earnings1
+        return self.endowment2
 
     def belief2_error_message(self, value):
         if self.treatment == 'cost' and \

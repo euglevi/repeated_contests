@@ -1,13 +1,16 @@
+
 <ul>
 	<li>The prize in each stage is worth <b>100 tokens</b>.</li>	
 	<li>The exact chance of winning the prize in each stage is given by the
-		number of lottery tickets bought by you, divided by the total
-		number of lottery tickets bought by both you and your
-		co-participant. </li>
+		number of lottery tickets you buy and the number of lottery
+		tickets your co-participant buys.  </li>
 	<li>More precisely, if you buy <i>X</i> lottery tickets and your
-		co-participant buys <i>Y</i> lottery tickets, then your chance of
-		winning the prize is <i>X/(X+Y)</i>, and your co-participant’s chance of
-		winning is <i>Y/(X+Y)</i>.</li>
+		co-participant buys <i>Y</i> lottery tickets, then
+		<ul>
+			<li> your chance of winning the prize is <i>X/(X+Y)</i>, and </li>
+			<li> your co-participant’s chance of winning is <i>Y/(X+Y)</i>.</li>
+		</ul>
+	</li>
 	<li>For any number of lottery tickets purchased by your co-participant,
 		the more lottery tickets you buy, the higher your chance of
 		winning the lottery; the fewer lottery tickets you buy, the
@@ -30,6 +33,23 @@
     </p>
   </div>
 </div>
+{% if player.treatment == 'budget' %}
+<div class="card border-success mb-3">
+  <div class="card-body">
+    <h6 class="card-title">Example</h6>
+    <p class="card-text">
+	<ul>
+		<li>If you purchase 12 lottery tickets and your co-participant
+			purchases 4 lottery tickets, then the total number of
+			lottery tickets is 16.</li>
+		<li>Your chance of winning is 12/16 = 3/4 = 75%.</li>
+		<li>Your co-participant’s chance of winning is 4/16 = 1/4 =
+			25%.</li> 
+	</ul>
+    </p>
+  </div>
+</div>
+{% else %}
 <div class="card border-success mb-3">
   <div class="card-body">
     <h6 class="card-title">Example</h6>
@@ -45,7 +65,7 @@
     </p>
   </div>
 </div>
-
+{% endif %}
 <ul>
 	<li>Once both you and your co-participant have chosen how many lottery
 		tickets to buy, the computer will determine which participant

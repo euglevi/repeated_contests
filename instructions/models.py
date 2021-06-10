@@ -47,18 +47,18 @@ class Subsession(BaseSubsession):
                 p.endowment1 = 100
             if p.treatment == 'baseline':
                 p.question3_answer = '90 tokens'
-                p.question4_answer = '190 tokens'
+                p.question4_answer = '100 tokens'
                 p.question5_answer = '1 ticket'
             elif p.treatment == 'budget':
                 p.question3_answer = '15 tokens'
-                p.question4_answer = '115 tokens'
+                p.question4_answer = '25 tokens'
                 p.question5_answer = '1 ticket'
             elif p.treatment == 'cost':
                 p.question3_answer = '90 tokens'
-                p.question4_answer = '190 tokens'
+                p.question4_answer = '100 tokens'
             elif p.treatment == 'productive':
                 p.question3_answer = '90 tokens'
-                p.question4_answer = '190 tokens'
+                p.question4_answer = '100 tokens'
                 p.question5_answer = '4 tickets'
 
 
@@ -108,8 +108,8 @@ class Player(BasePlayer):
                                                  '4 tokens'],
                                          widget=widgets.RadioSelect)
     question6 = models.BooleanField(label=
-                                    "6. Your final earning from the experiment"
-                                    " will be your earning after:", 
+                                    "6. Your final earnings from the experiment"
+                                    " will be your earnings after:", 
                                     choices=[[False, "Stage 1"], [True, "Stage 2"]],
                                     widget=widgets.RadioSelect)
     question3_answer = models.StringField()
@@ -131,7 +131,7 @@ class Player(BasePlayer):
 
     def question4_choices(self):
         if self.treatment == 'budget':
-            choices = ['115 tokens', '75 tokens', '15 tokens']
+            choices = ['115 tokens', '25 tokens', '15 tokens']
         else:
             choices = ['190 tokens', '100 tokens', '90 tokens']
         return choices

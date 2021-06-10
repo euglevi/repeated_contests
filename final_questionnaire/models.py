@@ -307,12 +307,12 @@ class Player(BasePlayer):
 
 
     fairness1 = models.IntegerField(choices=[[1, "Very unfair"],[2, "Somewhat unfair"],[3, "Neither fair nor unfair"],[4,"Somewhat fair"],[5,"Very fair"]],widget=widgets.RadioSelectHorizontal, label="In the experiment, did you consider fair the way in which outcomes were decided in Stage 1?")
-    decision1 = models.BooleanField(choices=[[True, "Yes"],[False,"No"]],widget=widgets.RadioSelect,label="Did the possibility of different endowments in Stage 2 affect your decision in Stage 1?")
-    decision_how1 = models.LongStringField(label="If yes, how?", blank=True)
 
 
     fairness2 = models.IntegerField(choices=[[1, "Very unfair"],[2, "Somewhat unfair"],[3, "Neither fair nor unfair"],[4,"Somewhat fair"],[5,"Very fair"]],widget=widgets.RadioSelectHorizontal, label="In the experiment, did you consider fair the way in which outcomes were decided in Stage 2?")
-    decision2 = models.BooleanField(choices=[[True, "Yes"],[False,"No"]],widget=widgets.RadioSelect,label="Did the possibility of different endowments in Stage 2 affect your decision in Stage 2?")
+    decision2 = models.BooleanField(choices=[[True, "Yes"],[False,"No"]],widget=widgets.RadioSelect,label="Did the possibility of different earnings in Stage 1 affect your decision in Stage 2?")
     decision_how2 = models.LongStringField(label="If yes, how?", blank=True)
+    # decision2 = models.BooleanField(choices=[[True, "Yes"],[False,"No"]],widget=widgets.RadioSelect,label="Did the possibility of different endowments in Stage 2 affect your decision in Stage 2?")
+    # decision_how2 = models.LongStringField(label="If yes, how?", blank=True)
 
     comments = models.LongStringField(label="Any other comment?", blank=True)

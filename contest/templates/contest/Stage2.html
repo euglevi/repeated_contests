@@ -8,12 +8,16 @@ Stage 2
 
 {% block content %}
 
-Your earning after Stage 1: <b>{{ player.earnings1 }} tokens</b>.
+Your earnings after Stage 1: <b>{{ player.earnings1 }} tokens</b>.
 <br>
-Your co-participant earning after Stage 1: <b>{{ player.other_earnings1 }} tokens</b>.
+Your co-participant's earnings after Stage 1: <b>{{ player.other_earnings1 }} tokens</b>.
+<br><br>
+Your endowment in Stage 2: <b>{{ player.endowment1 }} tokens</b>.
+<br>
+Your co-participant's endowment in Stage 2: <b>{{ player.endowment1 }} tokens</b>.
 <br><br>
 
-You can use your earning from Stage 1 to buy lottery tickets. Your co-participant will make the same decision.
+In Stage 2, you can use your endowment to buy lottery tickets. Your co-participant will make the same decision.
 <br>
 <b>
 	{% if player.treatment == 'baseline' or player.treatment == 'budget' or group.total_tickets1 == 0 %}

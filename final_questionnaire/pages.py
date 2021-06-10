@@ -24,8 +24,8 @@ class Questionnaire(Page):
     form_model = 'player'
     form_fields = ['age', 'gender', 'country_birth', 'education',
                    'employment_status', 'political_beliefs',
-                   'economic_beliefs', 'fairness1', 'decision1',
-                   'decision_how1' ,'fairness2', 'decision2', 'decision_how2',
+                   'economic_beliefs', 'fairness1', 
+                   'fairness2', 'decision2', 'decision_how2',
                    'experiments_economics', 'comments']
 
     def is_displayed(self):

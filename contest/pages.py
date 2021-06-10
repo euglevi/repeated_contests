@@ -24,7 +24,6 @@ class Stage1(Page):
         return self.participant.vars['group_formed'] == True and \
                 self.participant.vars['expiry'] == False
 
-
     def before_next_page(self):
         if self.timeout_happened:
             self.player.expiry = True
