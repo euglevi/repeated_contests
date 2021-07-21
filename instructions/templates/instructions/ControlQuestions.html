@@ -38,7 +38,12 @@ In Stage 1, suppose you buy 10 lottery tickets, and your co-participant buys 20 
 {% else %}
 {% formfield 'question5' %}
 {% endif %}
+{% if player.treatment == 'cost' %}
+{% formfield 'question6_cost' %}
+{% else %}
 {% formfield 'question6' %}
+{% endif %}
+{% formfield 'question7' %}
 
 
 <button class="btn btn-primary">Submit</button>

@@ -22,11 +22,29 @@ class CRT(Page):
 class Questionnaire(Page):
 
     form_model = 'player'
-    form_fields = ['age', 'gender', 'country_birth', 'education',
+
+    def get_form_fields(self):
+        if self.player.participant.vars['treatment'] == 'baseline': 
+            return ['age', 'gender', 'country_birth', 'education',
                    'employment_status', 'political_beliefs',
                    'economic_beliefs', 'fairness1', 
                    'fairness2', 'decision2', 'decision_how2',
                    'experiments_economics', 'comments']
+        elif self.player.participant.vars['treatment'] in ['cost', 'productive']:
+            return ['age', 'gender', 'country_birth', 'education',
+                   'employment_status', 'political_beliefs',
+                   'economic_beliefs', 'fairness1', 
+                   'fairness2', 'decision1a', 'decision_how1a', 
+                   'decision2', 'decision_how2',
+                   'experiments_economics', 'comments']
+        elif self.player.participant.vars['treatment'] == 'budget':
+            return ['age', 'gender', 'country_birth', 'education',
+                   'employment_status', 'political_beliefs',
+                   'economic_beliefs', 'fairness1', 
+                   'fairness2', 'decision1b', 'decision_how1b', 
+                   'decision2', 'decision_how2',
+                   'experiments_economics', 'comments']
+
 
     def is_displayed(self):
         return self.participant.vars['group_formed'] == True and \

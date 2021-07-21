@@ -22,7 +22,9 @@ Thank you for participating in our experiment! <br> <br>
 
 {% if participant.vars.expiry_group == False and participant.vars.group_formed == True and participant.vars.expiry == False %}
 <p align=center><b>
-	Your earnings after Stage 2: {{ participant.vars.earnings2 }} tokens
+	Your earnings from Stage 1: {{ participant.vars.earnings1 }} tokens
+	<br>
+	Your earnings from Stage 2: {{ participant.vars.earnings2 }} tokens
 	<br>
 	Your additional earning from the first opportunity: {{ participant.vars.bonus1 }} tokens
 	<br>

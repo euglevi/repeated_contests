@@ -61,6 +61,7 @@ class Results1(Page):
 
     def before_next_page(self):
         self.player.record_other_earnings1()
+        self.player.record_other_endowment2()
 
 class BeliefElicitation2(Page):
 
@@ -141,6 +142,7 @@ class Results2(Page):
         self.player.set_earnings_beliefs()
         self.participant.vars['bonus1'] = self.player.bonus1
         self.participant.vars['bonus2'] = self.player.bonus2
+        self.participant.vars['earnings1'] = self.player.earnings1
         self.participant.vars['earnings2'] = self.player.earnings2
 
 page_sequence = [FormingGroups, Stage1, Results1WaitPage, Results1,

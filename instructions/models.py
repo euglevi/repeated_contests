@@ -23,8 +23,11 @@ class Constants(BaseConstants):
     # answers to control questions
     question1_answer = False
     question2_answer = "10/30" 
+    question3_answer = "90 tokens"
     question5_cost_answer = "1 token"
-    question6_answer = True
+    question6_answer = "1 ticket"
+    question6_cost_answer = "4 tokens"
+    question7_answer = "The sum of your earnings from Stage 1 and Stage 2"
     bonus = 30
     exchange_rate = 250
 
@@ -41,23 +44,16 @@ class Subsession(BaseSubsession):
             p.participant.vars['expiry'] = False
             p.participant.vars['expiry_passive'] = False
             p.participant.vars['expiry_group'] = False
-            if p.treatment == 'budget':
-                p.endowment1 = 25
-            else:
-                p.endowment1 = 100
+            p.endowment1 = 100
             if p.treatment == 'baseline':
-                p.question3_answer = '90 tokens'
                 p.question4_answer = '100 tokens'
                 p.question5_answer = '1 ticket'
             elif p.treatment == 'budget':
-                p.question3_answer = '15 tokens'
                 p.question4_answer = '25 tokens'
                 p.question5_answer = '1 ticket'
             elif p.treatment == 'cost':
-                p.question3_answer = '90 tokens'
                 p.question4_answer = '100 tokens'
             elif p.treatment == 'productive':
-                p.question3_answer = '90 tokens'
                 p.question4_answer = '100 tokens'
                 p.question5_answer = '4 tickets'
 
@@ -87,7 +83,9 @@ class Player(BasePlayer):
     question3 = models.StringField(label=
                                     "3. Suppose you do not win the prize "
                                     "in Stage 1. What is your earning in Stage"
-                                    " 1?", widget=widgets.RadioSelect)
+                                    " 1?", 
+                                    choices = ['100 tokens', '90 tokens', '10 tokens'],
+                                   widget=widgets.RadioSelect)
     question4 = models.StringField(label=
                                     "4. Suppose you win the prize in Stage 1. "
                                     "How many tokens can you use to buy lottery"
@@ -107,10 +105,24 @@ class Player(BasePlayer):
                                         choices=['1 token', '2 tokens', 
                                                  '4 tokens'],
                                          widget=widgets.RadioSelect)
-    question6 = models.BooleanField(label=
-                                    "6. Your final earnings from the experiment"
-                                    " will be your earnings after:", 
-                                    choices=[[False, "Stage 1"], [True, "Stage 2"]],
+    question6 = models.StringField(label=
+                                    "6. Suppose you lose the prize in Stage 1."
+                                    " How many tickets does each token buy "
+                                    "you in Stage 2?", 
+                                    choices=['1 ticket', '2 tickets',
+                                             '4 tickets'],
+                                   widget=widgets.RadioSelect)
+    question6_cost = models.StringField(label=
+                                         "6. Suppose you lose the prize in Stage 1."
+                                         " How many tokens does each ticket "
+                                         "cost you in Stage 2?", 
+                                        choices=['1 token', '2 tokens', 
+                                                 '4 tokens'],
+                                         widget=widgets.RadioSelect)
+    question7 = models.StringField(label=
+                                    "7. Your final earnings from the experiment"
+                                    " will be:", 
+                                    choices=['Your earnings from Stage 1', 'Your earnings from Stage 2', 'The sum of your earnings from Stage 1 and Stage 2'],
                                     widget=widgets.RadioSelect)
     question3_answer = models.StringField()
     question4_answer = models.StringField()
@@ -121,17 +133,11 @@ class Player(BasePlayer):
     mistake4 = models.IntegerField(initial=0)
     mistake5 = models.IntegerField(initial=0)
     mistake6 = models.IntegerField(initial=0)
-
-    def question3_choices(self):
-        if self.treatment == 'budget':
-            choices = ['25 tokens', '15 tokens', '0 tokens']
-        else:
-            choices = ['100 tokens', '90 tokens', '10 tokens']
-        return choices
+    mistake7 = models.IntegerField(initial=0)
 
     def question4_choices(self):
         if self.treatment == 'budget':
-            choices = ['115 tokens', '25 tokens', '15 tokens']
+            choices = ['100 tokens', '25 tokens', '16 tokens']
         else:
             choices = ['190 tokens', '100 tokens', '90 tokens']
         return choices
@@ -147,7 +153,7 @@ class Player(BasePlayer):
             return 'Check your answer to question 2!'
 
     def question3_error_message(self, value):
-        if value != self.question3_answer:
+        if value != Constants.question3_answer:
             self.mistake3 = self.mistake3 + 1
             return 'Check your answer to question 3!'
 
@@ -170,6 +176,16 @@ class Player(BasePlayer):
         if value != Constants.question6_answer:
             self.mistake6 = self.mistake6 + 1
             return 'Check your answer to question 6!'
+
+    def question6_cost_error_message(self, value):
+        if value != Constants.question6_cost_answer:
+            self.mistake6 = self.mistake6 + 1
+            return 'Check your answer to question 6!'
+
+    def question7_error_message(self, value):
+        if value != Constants.question7_answer:
+            self.mistake7 = self.mistake7 + 1
+            return 'Check your answer to question 7!'
 
     # forms for belief elicitation
     belief1 = models.IntegerField(label=
