@@ -9,6 +9,12 @@ SESSION_CONFIGS = [
         app_sequence=['instructions', 'contest', 'final_questionnaire'],
     ),
     dict(
+        name='experiment6543_pilot',
+        num_demo_participants=10,
+        treatments = ['baseline', 'productive'],  
+        app_sequence=['instructions', 'contest', 'final_questionnaire'],
+    ),
+    dict(
         name='experiment6543_base',
         num_demo_participants=10,
         treatments = ['baseline'],  
