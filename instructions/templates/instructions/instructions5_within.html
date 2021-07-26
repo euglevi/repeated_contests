@@ -1,43 +1,50 @@
 
 <ul>
-	{% if player.treatment == 'budget' %}
-	<li>In Stage 2, both you and your co-participant will again be given an
-		endowment to compete for a
-		prize of <b>100 tokens</b>. 
-		<ul>
-			<li>The participant who won the lottery in Stage 1 will have an endowment of <b>25 tokens.</b></li>
-			<li>The participant who did not win the lottery in Stage 1 will have an endowment of <b>16 tokens.</b></li>
-		</ul>
-		As in Stage 1, both you and your co-participant can buy
-		lottery tickets that will enter the draw for the prize. </li>
-	{% else %}
-	<li>In Stage 2, both you and your co-participant will again be given an
-		endowment of 100 tokens to compete for a
-		prize of <b>100 tokens</b>. As in Stage 1, both you and your co-participant can buy
-		lottery tickets that will enter the draw for the prize. </li>
-	{% endif %}
-	<li>
-		<b>
-			{% if player.treatment == 'baseline' or player.treatment == 'budget' %}
-			As in Stage 1, you and your co-participant can buy 1
-			lottery ticket with 1 token.
-			{% elif player.treatment == 'productive' %}
-			If you won the prize in Stage 1, you can buy 4 lottery
-			tickets with 1 token and your co-participant can buy 1
-			lottery ticket with 1 token. If you did not win the
-			prize in Stage 1, you can buy 1 lottery ticket with 1
-			token and your co-participant can buy 4 lottery tickets
-			with 1 token. 
-			{% elif player.treatment == 'cost' %}
-			If you won the prize in Stage 1, you can buy 1 lottery
-			ticket with 1 token and your co-participant can buy 1
-			lottery ticket with 4 tokens. If you did not win the
-			prize in Stage 1, you can buy 1 lottery tickets with 4
-			tokens and your co-participant can buy 1 lottery ticket
-			with 1 token.
-			{% endif %}
-		</b>
-	</li>
+    {% if player.treatment == 'budget' %}
+    <li>In Stage 2, both you and your co-participant will again be given an
+        endowment to compete for a
+        prize of <b>100 tokens</b>. 
+<ul>
+            <li>The participant who won the lottery in Stage 1 will have an endowment of <b>25 tokens.</b></li>
+            <li>The participant who did not win the lottery in Stage 1 will have an endowment of <b>16 tokens.</b></li>
+</ul>
+        As in Stage 1, both you and your co-participant can buy lottery
+        tickets that will enter the draw for the prize. </li>
+    {% else %}
+    <li>In Stage 2, both you and your co-participant will again be
+            given an endowment of 100 tokens to compete for a prize of
+            <b>100 tokens</b>. As in Stage 1, both you and your
+            co-participant can buy lottery tickets that will enter the
+            draw for the prize. </li>
+    {% endif %}
+<b>
+    {% if player.treatment == 'baseline' or player.treatment == 'budget' %}
+            <li>As in Stage 1, you and your co-participant can buy 1
+                    lottery ticket with 1 token.</li>
+</b>
+            {% elif player.treatment == 'productive' %}
+            <li>If you won the prize in Stage 1, you can buy 4 lottery
+            tickets with 1 token and your co-participant can buy 1
+            lottery ticket with 1 token.</li>
+            <li>If you did not win the
+            prize in Stage 1, you can buy 1 lottery ticket with 1
+            token and your co-participant can buy 4 lottery tickets
+            with 1 token. </li>
+</b>
+            <li>If neither you nor your co-participant won the price, you and co-participant
+                    can both buy 1 lottery ticket with 1 token.</li>
+            {% elif player.treatment == 'cost' %}
+        <li>If you won the prize in Stage 1, you can buy 1 lottery
+            ticket with 1 token and your co-participant can buy 1
+            lottery ticket with 4 tokens.</li>
+        <li>If you did not win the
+            prize in Stage 1, you can buy 1 lottery tickets with 4
+            tokens and your co-participant can buy 1 lottery ticket
+            with 1 token.</li>
+</b>
+            <li>If neither you nor your co-participant won the price, you and co-participant
+                        can both buy 1 lottery ticket with 1 token.</li>
+    {% endif %}
 </ul>
 
 <div class="card bg-light border-danger mb-3">

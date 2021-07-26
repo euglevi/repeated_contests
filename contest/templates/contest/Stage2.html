@@ -20,30 +20,30 @@ Your co-participant's endowment in Stage 2: <b>{{ player.other_endowment2 }} tok
 In Stage 2, you can use your endowment to buy lottery tickets. Your co-participant will make the same decision.
 <br>
 <b>
-	{% if player.treatment == 'baseline' or player.treatment == 'budget' or group.total_tickets1 == 0 %}
-	<ul>
-		<li>For you, one token buys one lottery ticket.</li>
-		<li>For your co-participant, one token buys one lottery ticket.</li>
-	</ul>
+        {% if player.treatment == 'baseline' or player.treatment == 'budget' or group.total_tickets1 == 0 %}
+        <ul>
+                <li>For you, one token buys one lottery ticket.</li>
+                <li>For your co-participant, one token buys one lottery ticket.</li>
+        </ul>
 	{% elif player.treatment == 'productive' and player.id_in_group == group.winner1 %}
 	<ul>
-		<li>For you, one token buys four lottery ticket.</li>
-		<li>For your co-participant, one token buys one lottery ticket.</li>
+                <li>For you, one token buys four lottery tickets.</li>
+                <li>For your co-participant, one token buys one lottery ticket.</li>
 	</ul>
 	{% elif player.treatment == 'productive' and player.id_in_group != group.winner1 %}
 	<ul>
-		<li>For you, one token buys one lottery ticket.</li>
-		<li>For your co-participant, one token buys four lottery ticket.</li>
+                <li>For you, one token buys one lottery ticket.</li>
+                <li>For your co-participant, one token buys four lottery tickets.</li>
 	</ul>
 	{% elif player.treatment == 'cost' and player.id_in_group == group.winner1 %}
 	<ul>
-		<li>For you, one token buys one lottery ticket.</li>
-		<li>For your co-participant, four tokens buy one lottery ticket.</li>
+                <li>For you, one token buys one lottery ticket.</li>
+                <li>For your co-participant, four tokens buy one lottery ticket.</li>
 	</ul>
 	{% elif player.treatment == 'cost' and player.id_in_group != group.winner1 %}
 	<ul>
-		<li>For you, four tokens buy one lottery ticket.</li>
-		<li>For your co-participant, one token buys one lottery ticket.</li>
+                <li>For you, four tokens buy one lottery ticket.</li>
+                <li>For your co-participant, one token buys one lottery ticket.</li>
 	</ul>
 	{% endif %}
 </b>
