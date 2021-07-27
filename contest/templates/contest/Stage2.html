@@ -7,65 +7,86 @@ Stage 2
 {% endblock %}
 
 {% block content %}
-
 Your earnings after Stage 1: <b>{{ player.earnings1 }} tokens</b>.
-<br>
-Your co-participant's earnings after Stage 1: <b>{{ player.other_earnings1 }} tokens</b>.
-<br><br>
+<br />
+Your co-participant's earnings after Stage 1:
+<b>{{ player.other_earnings1 }} tokens</b>. <br /><br />
 Your endowment in Stage 2: <b>{{ player.endowment2 }} tokens</b>.
-<br>
-Your co-participant's endowment in Stage 2: <b>{{ player.other_endowment2 }} tokens</b>.
-<br><br>
+<br />
+Your co-participant's endowment in Stage 2:
+<b>{{ player.other_endowment2 }} tokens</b>. <br /><br />
 
-In Stage 2, you can use your endowment to buy lottery tickets. Your co-participant will make the same decision.
-<br>
+In Stage 2, you can use your endowment to buy lottery tickets. Your
+co-participant will make the same decision.
+<br />
 <b>
         {% if player.treatment == 'baseline' or player.treatment == 'budget' or group.total_tickets1 == 0 %}
         <ul>
                 <li>For you, one token buys one lottery ticket.</li>
-                <li>For your co-participant, one token buys one lottery ticket.</li>
+                <li>
+                        For your co-participant, one token buys one lottery
+                        ticket.
+                </li>
         </ul>
-	{% elif player.treatment == 'productive' and player.id_in_group == group.winner1 %}
-	<ul>
+        {% elif player.treatment == 'productive' and player.id_in_group == group.winner1 %}
+        <ul>
                 <li>For you, one token buys four lottery tickets.</li>
-                <li>For your co-participant, one token buys one lottery ticket.</li>
-	</ul>
-	{% elif player.treatment == 'productive' and player.id_in_group != group.winner1 %}
-	<ul>
+                <li>
+                        For your co-participant, one token buys one lottery
+                        ticket.
+                </li>
+        </ul>
+        {% elif player.treatment == 'productive' and player.id_in_group != group.winner1 %}
+        <ul>
                 <li>For you, one token buys one lottery ticket.</li>
-                <li>For your co-participant, one token buys four lottery tickets.</li>
-	</ul>
-	{% elif player.treatment == 'cost' and player.id_in_group == group.winner1 %}
-	<ul>
+                <li>
+                        For your co-participant, one token buys four lottery
+                        tickets.
+                </li>
+        </ul>
+        {% elif player.treatment == 'cost' and player.id_in_group == group.winner1 %}
+        <ul>
                 <li>For you, one token buys one lottery ticket.</li>
-                <li>For your co-participant, four tokens buy one lottery ticket.</li>
-	</ul>
-	{% elif player.treatment == 'cost' and player.id_in_group != group.winner1 %}
-	<ul>
+                <li>
+                        For your co-participant, four tokens buy one lottery
+                        ticket.
+                </li>
+        </ul>
+        {% elif player.treatment == 'cost' and player.id_in_group != group.winner1 %}
+        <ul>
                 <li>For you, four tokens buy one lottery ticket.</li>
-                <li>For your co-participant, one token buys one lottery ticket.</li>
-	</ul>
-	{% endif %}
+                <li>
+                        For your co-participant, one token buys one lottery
+                        ticket.
+                </li>
+        </ul>
+        {% endif %}
 </b>
-<br>
+<br />
 
 {% formfields %}
 
 <button class="btn btn-primary">Submit</button>
-<br>
-<br>
+<br />
+<br />
 <p>
-    <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
-       aria-controls="collapseExample">
-	Instructions from the previous screens
-    </a>
+        <a
+                class="btn btn-primary"
+                data-toggle="collapse"
+                href="#collapseExample"
+                role="button"
+                aria-expanded="false"
+                aria-controls="collapseExample"
+        >
+                Instructions from the previous screens
+        </a>
 </p>
 <div class="collapse" id="collapseExample">
-    <div class="card bg-light border-dark">
-	<div class="card-body">
-	    {% include "contest/instructions5_within.html" %}
-	    {% include "contest/instructions6_within.html" %}
-	</div>
-    </div>
+        <div class="card bg-light border-dark">
+                <div class="card-body">
+                        {% include "contest/instructions5_within.html" %} 
+                        {% include "contest/instructions6_within.html" %}
+                </div>
+        </div>
 </div>
 {% endblock %}

@@ -21,17 +21,17 @@ Your co-participant's endowment in Stage 2: <b>{{ player.other_endowment2 }} tok
 In Stage 2, you can use your endowment to buy lottery tickets. Your co-participant will make the same decision.
 <br>
 <b>
-	{% if player.treatment == 'baseline' or player.treatment == 'budget' or group.total_tickets1 == 0 %}
-	In Stage 2, for both you and your co-participant one token buys one lottery ticket.
-	{% elif player.treatment == 'productive' and player.id_in_group == group.winner1 %}
-	In Stage 2, for you one token buys four lottery tickets. For your co-participant, one token buys one lottery ticket.
-	{% elif player.treatment == 'productive' and player.id_in_group != group.winner1 %}
-	In Stage 2, for you one token buys one lottery ticket. For your co-participant, one token buys four lottery tickets.
-	{% elif player.treatment == 'cost' and player.id_in_group == group.winner1 %}
-	In Stage 2, for you one token buys one lottery ticket. For your co-participant, four tokens buy one lottery ticket.
-	{% elif player.treatment == 'cost' and player.id_in_group != group.winner1 %}
-	In Stage 2, for you four tokens buy one lottery ticket. For your co-participant, one token buys one lottery ticket.
-	{% endif %}
+            {% if player.treatment == 'baseline' or player.treatment == 'budget' or group.total_tickets1 == 0 %}
+            In Stage 2, for both you and your co-participant one token buys one lottery ticket.
+            {% elif player.treatment == 'productive' and player.id_in_group == group.winner1 %}
+            In Stage 2, for you one token buys four lottery tickets. For your co-participant, one token buys one lottery ticket.
+            {% elif player.treatment == 'productive' and player.id_in_group != group.winner1 %}
+            In Stage 2, for you one token buys one lottery ticket. For your co-participant, one token buys four lottery tickets.
+            {% elif player.treatment == 'cost' and player.id_in_group == group.winner1 %}
+            In Stage 2, for you one token buys one lottery ticket. For your co-participant, four tokens buy one lottery ticket.
+            {% elif player.treatment == 'cost' and player.id_in_group != group.winner1 %}
+            In Stage 2, for you four tokens buy one lottery ticket. For your co-participant, one token buys one lottery ticket.
+            {% endif %}
 </b>
 <br>
 

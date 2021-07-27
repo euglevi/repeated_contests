@@ -23,27 +23,27 @@ Outcome of Stage 1
         });
     });
 </script>
+<p align="center">
+        Lottery tickets bought by you: {{ player.tokens1 }} tickets
+        <br /><br />
+        Lottery tickets bought by your co-participant: {{ tickets_other }}
+        tickets
+        <br /><br />
+        Your chance of winning the prize: {{ chance }}%
+        <br /><br />
+        Your co-participant’s chance of winning the prize: {{ chance_other }}%
+        <br /><br />
+        The winner of the prize: 
+        {% if player.id_in_group == group.winner1 %}
+        <b>You</b >
+        {% elif group.total_tickets1 == 0 %}
+        <b>None</b> 
+        {% else %}
+        <b>Your co-participant</b> 
+        {% endif %} <br /><br />
+        <b>Your earning from Stage 1:</b> {{ player.earnings1 }} tokens
 
-<p align='center'>
-
-	Lottery tickets bought by you: {{ player.tokens1 }} tickets
-	<br><br>
-	Lottery tickets bought by your co-participant: {{ tickets_other }} tickets
-	<br><br>
-	Your chance of winning the prize: {{ chance }}%
-	<br><br>
-	Your co-participant’s chance of winning the prize: {{ chance_other }}%
-	<br><br>
-	The winner of the prize: {% if player.id_in_group == group.winner1 %}<b>You</b>
-	{% elif group.total_tickets1 == 0 %}<b>None</b> {% else %}
-	<b>Your co-participant</b> {% endif %}
-	<br><br>
-	<b>Your earning from Stage 1:</b> {{ player.earnings1 }} tokens
-	
-
-	<br><br>
-	{% next_button %}
-
+        <br /><br />
+        {% next_button %}
 </p>
-
 {% endblock %}

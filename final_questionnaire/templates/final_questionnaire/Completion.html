@@ -20,23 +20,24 @@ Ending the experiment
 
 Thank you for participating in our experiment! <br> <br>
 
-{% if participant.vars.expiry_group == False and participant.vars.group_formed == True and participant.vars.expiry == False %}
-<p align=center><b>
-	Your earnings from Stage 1: {{ participant.vars.earnings1 }} tokens
-	<br>
-	Your earnings from Stage 2: {{ participant.vars.earnings2 }} tokens
-	<br>
-	Your additional earning from the first opportunity: {{ participant.vars.bonus1 }} tokens
-	<br>
-	Your additional earning from the second opportunity: {{ participant.vars.bonus2 }} tokens
-	<br>
-	Your additional earning from the third opportunity: {{ player.bonus3 }} tokens
-	<br>
-	Your total earnings in tokens: {{ participant.vars.total_earnings }} tokens.
-	<br>
-	Your total bonus earnings in Dollars: ${{ player.final_earnings }}
-	<br>
-</b></p>
+{% if participant.vars.group_formed == True and participant.vars.expiry_group == False and participant.vars.expiry == False %}
+<p align="center">
+        <b>
+                Your earnings from Stage 1: {{ participant.vars.earnings1 }} tokens
+                <br />
+                Your earnings from Stage 2: {{ participant.vars.earnings2 }} tokens
+                <br />
+                Your additional earning from the first opportunity: {{ participant.vars.bonus1 }} tokens
+                <br />
+                Your additional earning from the second opportunity: {{ participant.vars.bonus2 }} tokens
+                <br />
+                Your additional earning from the third opportunity: {{ player.bonus3 }} tokens
+                <br />
+                Your total earnings in tokens: {{ participant.vars.total_earnings }} tokens.
+                <br />
+                Your total bonus earnings in Dollars: ${{ player.final_earnings }}
+        </b>
+</p>
 
 <br>
 You will receive the above amount plus the fixed payment posted on Prolific in about 48 hours after the entire experiment is completed. 
