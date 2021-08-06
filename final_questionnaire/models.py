@@ -366,7 +366,7 @@ class Player(BasePlayer):
             [5, "Very fair"],
         ],
         widget=widgets.RadioSelectHorizontal,
-        label="In the experiment, did you consider fair the way in which outcomes were decided in Stage 1?",
+        label="In the experiment, how fair did you consider the way outcomes were decided in Stage 1?",
     )
 
     fairness2 = models.IntegerField(
@@ -378,7 +378,7 @@ class Player(BasePlayer):
             [5, "Very fair"],
         ],
         widget=widgets.RadioSelectHorizontal,
-        label="In the experiment, did you consider fair the way in which outcomes were decided in Stage 2?",
+        label="In the experiment, how fair did you consider the way outcomes were decided in Stage 2?",
     )
     decision1a = models.BooleanField(
         choices=[[True, "Yes"], [False, "No"]],
